@@ -1,7 +1,8 @@
 import express from "express";
 import { config } from "dotenv";
 import bodyParser from "body-parser";
-import cors from "cors"
+import cors from "cors";
+import {errorMiddleware} from "./middleware/error.js";
 
 // Initialize Express application
 export const app = express();
@@ -16,3 +17,6 @@ config({ path: "./.env" });
 app.use(bodyParser.json()); // Parse incoming JSON requests
 app.use(express.urlencoded({ extended: true })); // Parse URL-encoded bodies
 app.use(express.json()); // Parse JSON payloads
+
+// Set up error handling middleware
+app.use(errorMiddleware);
