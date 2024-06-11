@@ -6,6 +6,9 @@ const companySchema = new mongoose.Schema({
   // Add other fields as required
 });
 
+// Define text index on 'name' and 'description' fields
+companySchema.index({ name: "text", description: "text" });
+
 const Company = mongoose.model("Company", companySchema);
 
 export default Company;

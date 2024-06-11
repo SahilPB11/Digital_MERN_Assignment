@@ -10,7 +10,7 @@ const validateEmail = (email) => {
   return emailRegex.test(email);
 };
 
-export const SignUp = async (req, res) => {
+export const signup = async (req, res, next) => {
   // Check if email is valid
   const { email, password } = req.body;
 
@@ -34,7 +34,7 @@ export const SignUp = async (req, res) => {
   }
 };
 
-export const login = async (req, res) => {
+export const login = async (req, res, next) => {
   try {
     const { email, password } = req.body;
     if (!email || !password) {
@@ -54,7 +54,7 @@ export const login = async (req, res) => {
   }
 };
 
-export const logout = async (req, res) => {
+export const logout = async (req, res, next) => {
   res
     .status(200)
     .cookie("token", null, {
